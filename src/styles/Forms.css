@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+.main-container {
+    display: flex;
+    height: 100vh;
+    background-color: #ACE2E1;
+    font-family: Montserrat; /* Light turquoise background */
+  }
+  
+  .left-side {
+    flex: 1.2; /* Make the left side slightly bigger */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #41C9E2;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+    background-size: cover; /* Ensures the background covers the entire element */
+    background-blend-mode: overlay; /* Gradient from bottom to top */
+    padding: 40px;
+  }
+  
+  .right-side {
+    flex: 0.8; /* Slightly smaller right side */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #F7EEDD; /* Light cream color for the right side */
+  }
+  
+  .form-card {
+    flex: 1;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 500px; /* Increased width */
+    max-height: 900px; /* Increased height */
+    margin: 20px auto; /* Center horizontally */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content horizontally */
+    justify-content: center;
+  }
+  
+  .form-card h2 {
+    margin-bottom: 20px;
+    color: #008DDA;
+    text-align: center; /* Center text */
+  }
+  
+  .form-card input,
+  .form-card button {
+    width: 100%; /* Full width of the card minus padding */
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #cccccc;
+    box-sizing: border-box; /* Include padding and border in element's width and height */
+  }
+  
+  .form-card button {
+    background-color: #008DDA;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .form-card button:hover {
+    background-color: #41C9E2; /* Lighter blue on hover */
+  }
+  
+  .logo {
+    max-width: 400px;
+    margin-bottom: 20px;
+  }
+  
+  .mantra {
+    font-size: 16px;
+    font-weight: bold;
+    color: #000000; /* Dark blue text */
+    text-align: center;
+    margin-left: 200px;
+    margin-right: 200px;
+  }
+  
+  .message-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #FFFFFF;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Consistent shadow effect */
+    width: 300px;
+    z-index: 1000;
+  }
+  
+  .message-popup p {
+    color: #000000;
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .message-popup .close-btn {
+    background-color: #008DDA;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-top: 10px;
+    border-radius: 5px;
+  }
+  
+  .loading-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #FFFFFF;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Consistent shadow effect */
+    width: 300px;
+    z-index: 1000;
+  }
+  
+  .loading-popup p {
+    color: #000000;
+    margin: 0;
+    font-size: 18px;
+  }
+
+  .video {
+    max-width: 100%;
+    height: auto;
+    margin-top: 20px;
+  }
+  
