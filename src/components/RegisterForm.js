@@ -15,11 +15,11 @@ const RegisterForm = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [showLoading, setShowLoading] = useState(false);
   const [showTakePhoto, setShowTakePhoto] = useState(false);
-  const [cameraActive, setCameraActive] = useState(false); // Track if the camera is active
   const navigate = useNavigate();
 
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
+  const streamRef = useRef(null); // Store the camera stream to stop it later
 
   const handleChange = (e) => {
     setFormData({
@@ -28,7 +28,6 @@ const RegisterForm = () => {
     });
   };
 
-
   const handleCapture = () => {
     const constraints = {
       video: true,
@@ -36,10 +35,11 @@ const RegisterForm = () => {
 
     navigator.mediaDevices.getUserMedia(constraints)
       .then((stream) => {
+        // Attach the video stream to the video element and autoplay.
+        streamRef.current = stream; // Store the stream for later stopping
         videoRef.current.srcObject = stream;
         videoRef.current.play();
         setShowTakePhoto(true); // Show the "Take Photo" button
-        setCameraActive(true);  // Set camera as active
       })
       .catch((error) => {
         console.error('Error accessing camera: ', error);
@@ -51,17 +51,23 @@ const RegisterForm = () => {
     const video = videoRef.current;
     const context = canvas.getContext('2d');
 
+    // Set the canvas size to match the video size.
     canvas.width = video.videoWidth;
     canvas.height = video.videoHeight;
 
+    // Draw the current frame from the video onto the canvas.
     context.drawImage(video, 0, 0, canvas.width, canvas.height);
 
+    // Convert the canvas to a blob and store it in the formData.
     canvas.toBlob((blob) => {
       setFormData({
         ...formData,
         photo: blob,
       });
     }, 'image/png');
+
+    // Stop the camera after taking the photo
+    streamRef.current.getTracks().forEach(track => track.stop());
   };
 
   const handleSubmit = async (e) => {
@@ -165,10 +171,9 @@ const RegisterForm = () => {
           )}
 
           {/* Video and Canvas for capturing photo */}
-          {cameraActive && (
-            <video ref={videoRef} style={{ width: '100%', height: 'auto', marginTop: '20px' }}></video>
-          )}
+          <video ref={videoRef} style={{ width: '100%', marginTop: '20px' }}></video>
           <canvas ref={canvasRef} style={{ display: 'none' }}></canvas>
+
           <p>
             Already have an account? <Link to="/login">Login here</Link>
           </p>
