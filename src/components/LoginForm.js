@@ -81,11 +81,14 @@ const LoginForm = () => {
       setMessage(result);
 
       if (response.status === 200) {
-        localStorage.setItem('username', result);
-        setShowPopup(true); // Show success popup
-        setTimeout(() => {
-          navigate(`/welcome/${result}`);
-        }, 2000);
+        if (result !== "Wrong passphrase"){
+          localStorage.setItem('username', result);
+          setShowPopup(true); // Show success popup
+          setTimeout(() => {
+            navigate(`/welcome/${result}`);
+          }, 2000);
+        }else { 
+          setShowPopup(true);}
       } else {
         setShowPopup(true); // Show failure popup
       }
@@ -105,28 +108,27 @@ const LoginForm = () => {
       </div>
       <div className="right-side">
         <div className="form-card">
-          <h2>Login</h2>
+          <h2>Connexion</h2>
           <form onSubmit={handleSubmit}>
             <input
               type="password"
               name="pass_phrase"
-              placeholder="Pass Phrase"
+              placeholder="Mot de passe"
               value={formData.pass_phrase}
               onChange={handleChange}
               required
             />
-            <button type="button" onClick={handleCapture}>Open Camera</button>
+            <button type="button" onClick={handleCapture}>Ouvrir la caméra</button>
             {showTakePhoto && (
-              <button type="button" onClick={takePhoto}>Take Photo</button>
+              <button type="button" onClick={takePhoto}>Prendre une photo</button>
             )}
-            <button type="submit">Login</button>
+            <button type="submit">Connexion</button>
           </form>
-          <p>{message}</p>
 
           {/* Loading Popup */}
           {showLoading && (
             <div className="loading-popup">
-              <p>Processing, please wait...</p>
+              <p>Traitement en cours, veuillez patienter...</p>
             </div>
           )}
 
@@ -142,7 +144,7 @@ const LoginForm = () => {
           <video ref={videoRef} style={{ width: '100%', height: 'auto', marginTop: '20px' }}></video>
           <canvas ref={canvasRef} style={{ display: 'none' }}></canvas>
           <p>
-            Don't have an account? <Link to="/register">Register here</Link>
+          Vous n'avez pas de compte ? <Link to="/register">S'inscrire ici</Link>
           </p>
         </div>
       </div>

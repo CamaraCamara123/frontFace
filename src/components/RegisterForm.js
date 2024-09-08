@@ -114,12 +114,12 @@ const RegisterForm = () => {
       </div>
       <div className="right-side">
         <div className="form-card">
-          <h2>Register</h2>
+          <h2>S'inscrire</h2>
           <form onSubmit={handleSubmit}>
             <input
               type="text"
               name="first_name"
-              placeholder="First Name"
+              placeholder="Prénom"
               value={formData.first_name}
               onChange={handleChange}
               required
@@ -127,7 +127,7 @@ const RegisterForm = () => {
             <input
               type="text"
               name="last_name"
-              placeholder="Last Name"
+              placeholder="Nom"
               value={formData.last_name}
               onChange={handleChange}
               required
@@ -143,22 +143,22 @@ const RegisterForm = () => {
             <input
               type="password"
               name="pass_phrase"
-              placeholder="Pass Phrase"
+              placeholder="Mot de Passe"
               value={formData.pass_phrase}
               onChange={handleChange}
               required
             />
-            <button type="button" onClick={handleCapture}>Open Camera</button>
+            <button type="button" onClick={handleCapture}>Ouvrir la caméra</button>
             {showTakePhoto && (
-              <button type="button" onClick={takePhoto}>Take Photo</button>
+              <button type="button" onClick={takePhoto}>Prendre une photo</button>
             )}
-            <button type="submit">Register</button>
+            <button type="submit">S'inscrire</button>
           </form>
 
           {/* Loading Popup */}
           {showLoading && (
             <div className="loading-popup">
-              <p>Processing, please wait...</p>
+              <p>Traitement en cours, veuillez patienter...</p>
             </div>
           )}
 
@@ -175,7 +175,7 @@ const RegisterForm = () => {
           <canvas ref={canvasRef} style={{ display: 'none' }}></canvas>
 
           <p>
-            Already have an account? <Link to="/login">Login here</Link>
+          Vous avez déjà un compte ? <Link to="/login">Connectez-vous ici</Link>
           </p>
         </div>
       </div>
